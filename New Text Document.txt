@@ -1,0 +1,53 @@
+CREATE TABLE comments (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    comment_text VARCHAR(255) NOT NULL,
+    photo_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(photo_id) REFERENCES photos(id),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+CREATE TABLE likes(
+user_id INT NOT NULL,
+photo_id INT NOT NULL,
+created_at TIMESTAMP DEFAULT NOW(),
+FOREIGN KEY(user_id) REFERENCES users(id),
+FOREIGN KEY(photo_id) REFERENCES photos(id),
+PRIMARY KEY (user_id, photo_id)
+);
+
+INSERT INTO users(username) VALUES
+('alexandru.dbre');
+INSERT INTO users(username) VALUES
+('silviu.dobze');
+INSERT INTO users(username) VALUES
+('gica_popescu_petrica');
+
+SELECT * FROM USERS;
+
+INSERT INTO photos(image_URL, user_id) VALUES
+('url_1',1);
+INSERT INTO photos(image_URL, user_id) VALUES
+('url_2',1);
+INSERT INTO photos(image_URL, useir_id) VALUES
+('url_3',2);
+INSERT INTO photos(image_URL, user_id) VALUES
+('url_4',3);
+
+SELECT * FROM photos;
+
+USE ig_clone;
+
+SELECT * FROM users;
+SELECT * FROM photos;
+
+INSERT INTO likes(user_id, photo_id) 
+	VALUES	
+		(1,1);
+        
+INSERT INTO likes(user_id, photo_id) 
+	VALUES	
+		(1,2);       
+        
+DROP TABLE photos;
